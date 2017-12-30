@@ -947,6 +947,7 @@ struct dwc3 {
 	unsigned		pullups_connected:1;
 	unsigned		resize_fifos:1;
 	unsigned		setup_packet_pending:1;
+	unsigned		start_config_issued:1;
 	unsigned		three_stage_setup:1;
 	unsigned		is_drd:1;
 
@@ -968,13 +969,13 @@ struct dwc3 {
 	atomic_t		in_lpm;
 	int			tx_fifo_size;
 	bool			b_suspend;
+	bool			no_set_vbus_power;
 	unsigned		vbus_draw;
 
 	/* IRQ timing statistics */
 	int			irq;
 	struct tasklet_struct	bh;
 	unsigned long		irq_cnt;
-	unsigned long		ep_cmd_timeout_cnt;
 	unsigned                bh_completion_time[MAX_INTR_STATS];
 	unsigned                bh_handled_evt_cnt[MAX_INTR_STATS];
 	unsigned                bh_dbg_index;
